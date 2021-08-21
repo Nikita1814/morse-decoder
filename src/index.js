@@ -38,9 +38,28 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
-}
+    let morsefiedArr = [];
+    let offset = 0
+    for (i = 0; i < (expr.length / 10); i ++){
+        let letter = expr.slice(offset, offset + 10).replace(/00/g,'').replace(/10/g,'.').replace(/11/g,'-')
+        offset += 10
+        morsefiedArr.push(letter)
+    }  
+    let deMorsefied = []
+    for (i=0; i < morsefiedArr.length; i++ ){
+        if(morsefiedArr[i] === '**********'){
+        deMorsefied.push(' ')
+        }
+        deMorsefied.push(MORSE_TABLE[morsefiedArr[i]])
+        
+    }
+    return deMorsefied.join('')
+  
+
+    }
 
 module.exports = {
     decode
 }
+
+
